@@ -63,6 +63,9 @@
                     };
                     LoadDateAndTime();
                 };
+                window.onbeforeunload = function(){
+                  return "You're leaving so soon? Are you sure you're making the right choice?";
+                };
             </script>
         </div>
     </head>
