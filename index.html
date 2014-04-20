@@ -98,16 +98,22 @@
                     var DateDiv = document.getElementById("Date");
                     var TimeDiv = document.getElementById("Time");
                     var TimeStamp = GetDateAndTime();
-                    var Second = TimeStamp[6]
-                    var Minute = TimeStamp[5]
+                    var Second = TimeStamp[6];
+                    var Minute = TimeStamp[5];
+                    var Hour = TimeStamp[4];
                     if (Second.toString().length == 1){
                         Second = "0" + Second
                     };
                     if (Minute.toString().length == 1){
                         Minute = "0" + Minute
                     };
+                    if (Hour > 12){
+                        Hour = (Hour - 12);
+                    } else if (Hour == 0){
+                        Hour = 12;
+                    };
                     DateDiv.innerHTML = "Date: " + TimeStamp[3] + ", " + TimeStamp[1] + " " + TimeStamp[2] + ", " + TimeStamp[0];
-                    TimeDiv.innerHTML = "Time: " + TimeStamp[4] + ":" + Minute + ":" + Second;
+                    TimeDiv.innerHTML = "Time: " + Hour + ":" + Minute + ":" + Second;
                     setTimeout(function(){
                         setTimeout(SetDateAndTime(), 1);
                     }, 1);
