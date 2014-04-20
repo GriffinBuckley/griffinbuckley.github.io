@@ -13,6 +13,67 @@
                 text-align: center;
                 font-family: cursive;
             }
+            #GamesDiv {
+                width: 500px;
+                height: 480px;
+                background-color: white;
+                margin-left: auto;
+                margin-right: auto;
+                border: 1px solid gray;
+                box-sizing: border-box;
+                border-left: 0px solid gray;
+                border-right: 0px solid gray;
+            }
+            #GamesDiv #GamesTitle {
+                width: 100%;
+                height: 10%;
+                text-align: center;
+                font-size: 36px;
+                background-color: white;
+                border: 1px solid gray;
+                box-sizing: border-box;
+                border-top: 0px solid gray;
+                border-bottom: 0px solid gray;
+            }
+            #GamesDiv #GamesPanels {
+                width: 100%;
+                height: 95%;
+            }
+            #GamesDiv #GamesPanels #GamesMenuBar {
+                width: 25%;
+                height: 100%;
+                background-color: white;
+                float: left;
+                border: 1px solid gray;
+                box-sizing: border-box;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+            #GamesDiv #GamesPanels #GamesMenuBar .MenuOption {
+                width: 100%;
+                height: 10%;
+                text-align: center;
+                border: 1px solid gray;
+                box-sizing: border-box;
+                font-size: 36px;
+                cursor: pointer;
+                border-top: 0px solid gray;
+                border-left: 0px solid gray;
+                border-right: 0px solid gray;
+            }
+            #GamesDiv #GamesPanels #GameDisplayBox {
+                width: 75%;
+                height: 100%;
+                float: left;
+                border: 1px solid gray;
+                box-sizing: border-box;
+                background-color: white;
+                border-left: 0px solid gray;
+            }
+            #GamesDiv #GamesPanels #GameDisplayBox #GameFrame {
+                border: 0px solid gray;
+                box-sizing: border-box;
+            }
         </style>
         <div id="Scripts">
             <script type="text/javascript">
@@ -67,6 +128,16 @@
                   return "You're leaving so soon? Are you sure you're making the right choice?";
                 };
             </script>
+            <script type="text/javascript">
+                var CurrentGame = "";
+                function SelectGame(src){
+                    if (src != CurrentGame){
+                        var GameFrame = document.getElementById("GameFrame")
+                        GameFrame.src = src
+                        CurrentGame = src
+                    };
+                };
+            </script>
         </div>
     </head>
     <body>
@@ -75,8 +146,16 @@
             <div id="Date">Date: </div>
             <div id="Time">Time: </div>
         </div>
-        <div id="2048">
-            <iframe src="2048.htm" width=425px height=450px></iframe>
+        <div id="GamesDiv">
+            <div id="GamesTitle">Games</div>
+            <div id="GamesPanels">
+                <div id="GamesMenuBar">
+                    <div class="MenuOption" onclick="SelectGame('2048.htm')">2048</div>
+                </div>
+                <div id="GameDisplayBox">
+                    <iframe id="GameFrame" src="" width="100%" height="100%"></iframe> <!--2048.htm-->
+                </div>
+            </div>
         </div>
     </body>
 </html>
