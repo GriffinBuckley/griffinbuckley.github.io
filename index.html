@@ -59,6 +59,7 @@
                 text-align: center;
                 border: 1px solid gray;
                 box-sizing: border-box;
+                background-color: #d9d7d7;
                 font-size: 36px;
                 cursor: pointer;
                 border-top: 0px solid gray;
@@ -77,6 +78,23 @@
             #GamesDiv #GamesPanels #GameDisplayBox #GameFrame {
                 border: 0px solid gray;
                 box-sizing: border-box;
+            }
+            #PageTabs {
+                width: 50%;
+                height: 50px;
+            }
+            #PageTabs .PageTab {
+                width: 20%;
+                height: 100%;
+                border-top: 1px solid gray;
+                border-right: 1px solid gray;
+                box-sizing: border-box;
+                text-align: center;
+                font-size: 24px;
+                border-top-right-radius: 5px;
+                text-decoration: underline;
+                cursor: pointer;
+                float: left;
             }
         </style>
         <div id="Scripts">
@@ -170,6 +188,10 @@
         </div>
     </head>
     <body>
+        <div id="PageTabs">
+            <div class="PageTab">Home</div>
+            <div class="PageTab">Notes</div>
+        </div>
         <div id="Title">Griffin's Website</div>
         <div id="DateAndTime">
             <div id="Date">Date: </div>
