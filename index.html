@@ -170,14 +170,18 @@
                     var GameFrame = document.getElementById("GameFrame")
                     if (Clickable){
                         Clickable = false;
-                        if (src != CurrentGame){
+                        if (src != CurrentGame && button != CurrentButton){
+                            if (CurrentButton){
+                                CurrentButton.style.backgroundColor = CurrentButtonColor;
+                            };
                             GameFrame.src = src;
                             CurrentGame = src;
                             CurrentButton = document.getElementById(button);
                             CurrentButtonColor = CurrentButton.style.backgroundColor;
                             CurrentButton.style.backgroundColor = "#b46c41";
                         }
-                        else {
+                        else if (src == CurrentGame || CurrentButton == button){
+                            OriginalButton = CurrentButton;
                             GameFrame.src = "";
                             CurrentGame = "";
                             CurrentButton.style.backgroundColor = CurrentButtonColor;
@@ -207,6 +211,7 @@
             <div id="GamesPanels">
                 <div id="GamesMenuBar">
                     <div id="2048_Button" class="MenuOption" onclick="SelectGame('2048.htm', '2048_Button')">2048</div>
+                     <div id="lol" class="MenuOption" onclick="SelectGame('lol', 'lol')">2048</div>
                 </div>
                 <div id="GameDisplayBox">
                     <iframe id="GameFrame" src="" width="100%" height="100%"></iframe>
