@@ -1,0 +1,50 @@
+body {
+    background-color: #66FF66;
+}
+hr {
+    border: 0px solid black;
+}
+#Title {
+    font-size: 50px;
+    color: #fff;
+    text-decoration: underline;
+    text-align: center;
+    font-family: cursive;
+}
+#DateAndTime {
+    position: fixed;
+    right: 5px;
+    top: 0px;
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+#PageTabs {
+    width: 75%;
+    height: 50px;
+}
+#PageTabs .PageTab {
+    width: 125px;
+    height: 100%;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 24px;
+    border-top-right-radius: 5px;
+    text-decoration: underline;
+    cursor: pointer;
+    float: left;
+    z-index: 1;
+}
+#PageTabs #SelectedPageTab {
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    box-shadow: 1.25px 2.5px 5px #888888;
+    z-index: 2;
+}
+#PageTabs .PageTab a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #000
+}

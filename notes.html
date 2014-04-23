@@ -4,72 +4,6 @@
         <title>Griffin's Website</title>
         <link rel="stylesheet" type="text/css" href="shared_elements.css">
         <style type="text/css">
-            #GamesDiv {
-                width: 500px;
-                height: 480px;
-                background-color: #fff;
-                margin-left: auto;
-                margin-right: auto;
-                border: 1px solid #808080;
-                box-sizing: border-box;
-                border-left: 0px solid #808080;
-                border-right: 0px solid #808080;
-                -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-                -moz-user-select: none; /* mozilla browsers */
-                -khtml-user-select: none; /* webkit (konqueror) browsers */
-                -ms-user-select: none; /* IE10+ */
-            }
-            #GamesDiv #GamesTitle {
-                width: 100%;
-                height: 10%;
-                text-align: center;
-                font-size: 36px;
-                background-color: #fff;
-                border: 1px solid #808080;
-                box-sizing: border-box;
-                border-top: 0px solid #808080;
-                border-bottom: 0px solid #808080;
-            }
-            #GamesDiv #GamesPanels {
-                width: 100%;
-                height: 95%;
-            }
-            #GamesDiv #GamesPanels #GamesMenuBar {
-                width: 25%;
-                height: 100%;
-                background-color: #fff;
-                float: left;
-                border: 1px solid #808080;
-                box-sizing: border-box;
-                overflow-x: hidden;
-                overflow-y: auto;
-            }
-            #GamesDiv #GamesPanels #GamesMenuBar .MenuOption {
-                width: 100%;
-                height: 10%;
-                text-align: center;
-                border: 1px solid #808080;
-                box-sizing: border-box;
-                background-color: #d9d7d7;
-                font-size: 36px;
-                cursor: pointer;
-                border-top: 0px solid #808080;
-                border-left: 0px solid #808080;
-                border-right: 0px solid #808080;
-            }
-            #GamesDiv #GamesPanels #GameDisplayBox {
-                width: 75%;
-                height: 100%;
-                float: left;
-                border: 1px solid #808080;
-                box-sizing: border-box;
-                background-color: #fff;
-                border-left: 0px solid #808080;
-            }
-            #GamesDiv #GamesPanels #GameDisplayBox #GameFrame {
-                border: 0px solid #808080;
-                box-sizing: border-box;
-            }
         </style>
         <div id="Scripts">
             <script type="text/javascript">
@@ -167,8 +101,8 @@
     </head>
     <body>
         <div id="PageTabs">
-            <div class="PageTab" id="SelectedPageTab"><a href="index.html">Home</a></div>
-            <div class="PageTab"><a href="notes.html">Notes</a></div>
+            <div class="PageTab"><a href="index.html">Home</a></div>
+            <div class="PageTab" id="SelectedPageTab"><a href="notes.html">Notes</a></div>
         </div>
        <div id="DateAndTime">
             <div id="Date">Date: </div>
@@ -176,16 +110,5 @@
         </div>
         <div id="Title">Griffin's Website</div>
         <hr size="10px"/>
-        <div id="GamesDiv">
-            <div id="GamesTitle">Games</div>
-            <div id="GamesPanels">
-                <div id="GamesMenuBar">
-                    <div id="2048_Button" class="MenuOption" onclick="SelectGame('2048.htm', '2048_Button')">2048</div>
-                </div>
-                <div id="GameDisplayBox">
-                    <iframe id="GameFrame" src="" width="100%" height="100%"></iframe>
-                </div>
-            </div>
-        </div>
     </body>
 </html>
