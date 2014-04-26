@@ -54,6 +54,6 @@ hr {
 }
 #CommentsPanel #Comments {
     width: 100%;
-    height: 250px;
+    height: auto;
     border: 0px solid #808080;
 }
