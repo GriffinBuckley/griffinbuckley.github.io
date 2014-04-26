@@ -72,7 +72,7 @@
             }
         </style>
         <div id="Scripts">
-            <script src="TimeAndDate.js"></script>
+            <script src="shared_javascripts.js"></script>
             <script type="text/javascript">
                 var CurrentGame = "";
                 var CurrentButton = null;
@@ -116,9 +116,12 @@
             <div class="PageTab" id="SelectedPageTab"><a href="index.html">Home</a></div>
             <div class="PageTab"><a href="notes.html">Notes</a></div>
         </div>
-       <div id="DateAndTime">
-            <div id="Date">Date: </div>
-            <div id="Time">Time: </div>
+       <div id="DeviceInformation">
+           Date: <span id="Date"></span>
+           <br/>
+           Time: <span id="Time"></span>
+           <br/>
+           Device: <span id="DeviceType"></span>
         </div>
         <div id="Title">Griffin's Website</div>
         <hr size="10px"/>
