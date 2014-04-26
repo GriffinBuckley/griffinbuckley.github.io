@@ -12,7 +12,7 @@ hr {
     font-family: cursive;
 }
 #DeviceInformation {
-    position: fixed;
+    position: absolute;
     right: 5px;
     top: 0px;
     -webkit-user-select: none; /* webkit (safari, chrome) browsers */
