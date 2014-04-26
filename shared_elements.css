@@ -48,3 +48,10 @@ hr {
     text-decoration: none;
     color: #000
 }
+#CommentsPanel #CommentsTitle {
+    font-size: 36px;
+    text-align: left;
+}
+#CommentsPanel #Comments {
+    width: 100%;
+}
