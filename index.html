@@ -2,7 +2,10 @@
 <html>
     <head>
         <title>Griffin's Website - Home</title>
-	<link rel="icon" type="image/vnd.microsoft.icon" href="./Assets/Images/favicon.png"/>
+        <link rel="icon" type="image/vnd.microsoft.icon" href="./Assets/Images/favicon.png"/>
+        <script src="./Assets/JavaScript/shared_javascripts.js"></script>
+        <script type="text/javascript" src="./Assets/JavaScript/jquery.min.js"></script>
+        <script type="text/javascript" src="./Assets/JavaScript/animated_collapse.js"></script>
         <link rel="stylesheet" type="text/css" href="./Assets/CSS/shared_elements.css">
         <style type="text/css">
             #GamesDiv {
@@ -75,7 +78,6 @@
             }
         </style>
         <div id="Scripts">
-            <script src="./Assets/JavaScript/shared_javascripts.js"></script>
             <script type="text/javascript">
                 var CurrentGame = "";
                 var CurrentButton = null;
@@ -109,9 +111,20 @@
                         }, (2 * 1000));
                     };
                 };
+            </script>
+            <!--<script type="text/javascript">
                 /*window.onbeforeunload = function(){
                   //return "You're leaving so soon? Are you sure you're making the right choice?";
                 };*/
+            </script>-->
+            <script type="text/javascript">
+                CreateCookie("BlankCookie", "Test", (365 * 100), true);
+            </script>
+            <script type="text/javascript">
+                window.onload = function(){
+                    CollapseComments();
+                    LoadDateAndTime();
+                };
             </script>
         </div>
     </head>
@@ -143,11 +156,8 @@
         </div>
         <hr size="50px"/>
         <div id="CommentsPanel">
-            <div id="CommentsTitle">Comments</div>
+            <div id="CommentsTitle" onclick="animatedcollapse.toggle('Comments');">Comments <span id="ToggleComments"></span></div>
             <iframe id="Comments" src="./Html/comments.html"></iframe>
         </div>
-        <script type="text/javascript">
-            CreateCookie("BlankCookie", "Test", (365 * 100), true);
-        </script>
     </body>
 </html>

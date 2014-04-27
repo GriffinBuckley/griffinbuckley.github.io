@@ -56,9 +56,15 @@ hr {
 #CommentsPanel #CommentsTitle {
     font-size: 36px;
     text-align: left;
+    cursor: pointer;
+    display: block;
+}
+#CommentsPanel #CommentsTitle #ToggleComments {
+    font-size: 24px;
 }
 #CommentsPanel #Comments {
     width: 100%;
     height: 250px;
     border: 0px solid #808080;
+    display: none;
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Griffin's Website - Home</title>
+        <link rel="icon" type="image/vnd.microsoft.icon" href="./Assets/Images/favicon.png"/>
+        <link rel="stylesheet" type="text/css" href="./Assets/CSS/shared_elements.css">
+        <div id="Scripts">
+            <script src="./Assets/JavaScript/shared_javascripts.js"></script>
+        </div>
+
+
+
+
+<script type="text/javascript">
+
+animatedcollapse.addDiv('jason', 'fade=1;')
+
+animatedcollapse.ontoggle=function($, divobj, state){ //fires each time a DIV is expanded/contracted
+	//$: Access to jQuery
+	//divobj: DOM reference to DIV being expanded/ collapsed. Use "divobj.id" to get its ID
+	//state: "block" or "none", depending on state
+}
+
+animatedcollapse.init()
+
+</script>
+
+
+<a href="javascript:animatedcollapse.toggle('jason')">
+    <img src="toggle.jpg" border="0" /></a> <a href="javascript:animatedcollapse.show('jason')">Slide Down</a> || <a href="javascript:animatedcollapse.hide('jason')">Slide Up</a>
+
+<div id="jason" style="width: 300px; height:100px; background: #FFFFCC; display:none">
+<b>Content inside DIV!</b><br />
+<b>Note: Fade effect enabled. Height programmically defined. DIV hidden using inline CSS.</b><br />
+</div>

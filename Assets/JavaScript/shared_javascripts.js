@@ -113,16 +113,33 @@ function iFrameOnly(){
 	};
 };
 
-window.onload = function(){
-    function LoadDateAndTime(){
-        var DeviceInformationDiv = document.getElementById('DeviceInformation');
-        if (DeviceInformationDiv){
-            SetDateAndTime();
-            SetDeviceDisplay();
+function LoadDateAndTime(){
+    var DeviceInformationDiv = document.getElementById('DeviceInformation');
+    if (DeviceInformationDiv){
+        SetDateAndTime();
+        SetDeviceDisplay();
+    }
+    else {
+        setTimeout(LoadDateAndTime(), 10000);
+    };
+};
+
+function CollapseComments(){
+    var UpCaret = "&#9650;";
+    var DownCaret = "&#9660;";
+    var ToggleComments = document.getElementById('ToggleComments');
+    ToggleComments.innerHTML = DownCaret;
+    animatedcollapse.addDiv('Comments', 'fade=1;')
+    animatedcollapse.ontoggle=function($, divobj, state){ //fires each time a DIV is expanded/contracted
+        //$: Access to jQuery
+        //divobj: DOM reference to DIV being expanded/ collapsed. Use "divobj.id" to get its ID
+        //state: "block" or "none", depending on state
+        if (state == "block"){
+            ToggleComments.innerHTML = UpCaret;
         }
         else {
-            setTimeout(LoadDateAndTime(), 1000);
+            ToggleComments.innerHTML = DownCaret;
         };
     };
-    LoadDateAndTime();
+    animatedcollapse.init();
 };
