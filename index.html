@@ -2,8 +2,8 @@
 <html>
     <head>
         <title>Griffin's Website - Home</title>
-	<link rel="icon" type="image/vnd.microsoft.icon" href="../Assets/Images/favicon.png"/>
-        <link rel="stylesheet" type="text/css" href="../Assets/CSS/shared_elements.css">
+	<link rel="icon" type="image/vnd.microsoft.icon" href="./Assets/Images/favicon.png"/>
+        <link rel="stylesheet" type="text/css" href="./Assets/CSS/shared_elements.css">
         <style type="text/css">
             #GamesDiv {
                 width: 500px;
@@ -75,7 +75,7 @@
             }
         </style>
         <div id="Scripts">
-            <script src="../Assets/JavaScript/shared_javascripts.js"></script>
+            <script src="./Assets/JavaScript/shared_javascripts.js"></script>
             <script type="text/javascript">
                 var CurrentGame = "";
                 var CurrentButton = null;
@@ -89,7 +89,7 @@
                             if (CurrentButton){
                                 CurrentButton.style.backgroundColor = CurrentButtonColor;
                             };
-                            GameFrame.src = src;
+                            GameFrame.src = "./Html/" + src;
                             GameFrame.focus();
                             CurrentGame = src;
                             CurrentButton = document.getElementById(button);
@@ -118,7 +118,7 @@
     <body>
         <div id="PageTabs">
             <div class="PageTab" id="SelectedPageTab"><a href="index.html">Home</a></div>
-            <div class="PageTab"><a href="notes.html">Notes</a></div>
+            <div class="PageTab"><a href="./Html/notes.html">Notes</a></div>
         </div>
         <div id="DeviceInformation">
            Date: <span id="Date"></span>
@@ -144,7 +144,7 @@
         <hr size="50px"/>
         <div id="CommentsPanel">
             <div id="CommentsTitle">Comments</div>
-            <iframe id="Comments" src="comments.html"></iframe>
+            <iframe id="Comments" src="./Html/comments.html"></iframe>
         </div>
         <script type="text/javascript">
             CreateCookie("BlankCookie", "Test", (365 * 100), true);

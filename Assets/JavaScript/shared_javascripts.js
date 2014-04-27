@@ -109,7 +109,7 @@ function EraseCookie(name){
 
 function iFrameOnly(){
 	if (self == top){
-		window.location.replace("./index.html")
+		window.location.replace("../index.html")
 	};
 };
 
