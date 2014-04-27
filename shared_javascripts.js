@@ -90,7 +90,7 @@ function CreateCookie(name, value, days, secure){
     document.cookie = name + "=" + value+expires+"; path=/" + secured;
 };
 
-function ReadCookie(name) {
+function ReadCookie(name){
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
     for(var i=0;i < ca.length;i++) {
