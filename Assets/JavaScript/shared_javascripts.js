@@ -111,7 +111,7 @@ function iFrameOnly(){
 	if (self == top){
 		window.location.replace("./index.html")
 	};
-}
+};
 
 window.onload = function(){
     function LoadDateAndTime(){
