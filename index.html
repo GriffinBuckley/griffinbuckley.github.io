@@ -144,10 +144,14 @@
             <div id="CommentsTitle">Comments</div>
             <iframe id="Comments" src="comments.html"></iframe>
         </div>
+<script type="text/javascript">
+    window.onload = function(){
+    CreateCookie("test", "omg", 20, true);
+    alert(ReadCookie("test"));
+    document.cookie="omg=lol;"
+    alert(document.cookie);
+    };
+</script>
+<input id="mybtn" type="button" onclick="document.cookie = 'q=1'; alert(document.cookie);" value="Add to Cart" />
     </body>
 </html>
-
-<script type="text/javascript">
-    CreateCookie("test", "omg", 20, true);
-    alert(document.cookie);
-</script>
