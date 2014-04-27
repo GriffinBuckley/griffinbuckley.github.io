@@ -107,16 +107,22 @@ function EraseCookie(name){
     CreateCookie(name, "", -1);
 };
 
+function iFrameOnly(){
+	if (self == top){
+		window.location.replace("./index.html")
+	};
+}
+
 window.onload = function(){
     function LoadDateAndTime(){
         var DeviceInformationDiv = document.getElementById('DeviceInformation');
         if (DeviceInformationDiv){
             SetDateAndTime();
+            SetDeviceDisplay();
         }
         else {
-            setTimeout(LoadDateAndTime(), 50);
+            setTimeout(LoadDateAndTime(), 1000);
         };
     };
     LoadDateAndTime();
-    SetDeviceDisplay();
 };
