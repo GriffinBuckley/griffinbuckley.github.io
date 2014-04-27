@@ -136,6 +136,7 @@ function CollapseComments(){
         //state: "block" or "none", depending on state
         if (state == "block"){
             ToggleComments.innerHTML = UpCaret;
+            window.scrollTo(document.body.scrollLeft, document.body.scrollHeight);
         }
         else {
             ToggleComments.innerHTML = DownCaret;
