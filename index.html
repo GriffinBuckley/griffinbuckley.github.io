@@ -147,10 +147,10 @@
 <!--<input id="mybtn" type="button" onclick="document.cookie = 'q=1'; alert(document.cookie);" value="Add to Cart" />-->
         <script type="text/javascript">
             window.onload = function(){
-            CreateCookie("test", "omg", 20, true);
-            document.cookie="omg=lol;";
-            alert(ReadCookie("omg"));
-            alert(document.cookie);
+                CreateCookie("test", "omg", 20, true);
+                //document.cookie="omg=lol;";
+                alert(document.cookie);
+                alert(ReadCookie("omg"));
             };
         </script>
     </body>
