@@ -119,7 +119,9 @@
             </script>-->
             <script type="text/javascript">
                 CreateCookie("BlankCookie", "Test", (365 * 100), true);
-                alert(ReadCookie("BlankCookie"));
+                document.cookie="lol=omg"
+                alert(document.cookie);
+//                alert(ReadCookie("BlankCookie"));
             </script>
             <script type="text/javascript">
                 window.onload = function(){
