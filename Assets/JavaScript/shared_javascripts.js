@@ -75,9 +75,9 @@ function SetDeviceDisplay(){
 };
 
 function CreateCookie(name, value, days, secure){
-    var secured = ";";
+    var secured = "";
     if (secure){
-        secured = secured + " secure;";
+        secured = secured + "; secure";
     };
     if (days){
         var date = new Date();
@@ -87,9 +87,7 @@ function CreateCookie(name, value, days, secure){
     else {
         var expires = "";
     };
-    alert( name + "=" + value+expires + "; path=/" + secured);
-    document.cookie = name + "=" + value+expires + "; path=/"// + secured;
-    alert(document.cookie);
+    document.cookie = name + "=" + value+expires + "; path=/" + secured;
 };
 
 function ReadCookie(name){
