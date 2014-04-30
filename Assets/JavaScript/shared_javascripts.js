@@ -89,6 +89,7 @@ function CreateCookie(name, value, days, secure){
     };
     alert( name + "=" + value+expires + "; path=/" + secured);
     document.cookie = name + "=" + value+expires + "; path=/"// + secured;
+    alert(document.cookie);
 };
 
 function ReadCookie(name){
