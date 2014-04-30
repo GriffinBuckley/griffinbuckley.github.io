@@ -123,7 +123,7 @@
                     CreateCookie("Visits", 1, (365 * 100), false);
                 }
                 else {
-                    CreateCookie("Visits", (Visits + 1), (365 * 100), false);
+                    CreateCookie("Visits", (parseInt(Visits) + 1), (365 * 100), false);
                 };
                 alert(ReadCookie("Visits"));
             </script>
