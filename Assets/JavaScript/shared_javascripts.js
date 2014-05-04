@@ -87,8 +87,7 @@ function CreateCookie(name, value, days, secure){
     else {
         var expires = "";
     };
-    var CookieValue = name + "=" + value//+expires + "; path=/;" + secured;
-    alert(CookieValue);
+    var CookieValue = name + "=" + value + expires + "; path=/;" + secured;
     document.cookie = CookieValue;
 };
 
@@ -214,7 +213,7 @@ function SaveBackground(){
     if (BackgroundImageSrc.indexOf("data:") < 0){
         BackgroundImageSrc = ""
     };
-    EncodedData = encodeURIComponent(BackgroundImageSrc + "|" + BackgroundImage.alt)
+    EncodedData = encodeURIComponent(BackgroundImageSrc)// + "|" + BackgroundImage.alt)
     alert(EncodedData);
     CreateCookie("BackgroundImage", EncodedData, 365, false);
     alert(ReadCookie("BackgroundImage"))
