@@ -182,22 +182,18 @@ function DownloadImage(Url, Name){
 
 function SetPreviewImage(Src, Name){
     var PreviewImage = document.getElementById("PreviewImage");
-    if (Src == document.URL){
-        PreviewImage.src = "";
-    }
-    else {
-        PreviewImage.src = Src;
+    PreviewImage.src = Src;
+    if (PreviewImage.src.indexOf("data:") < 0){
+        PreviewImage.src = ""
     };
     PreviewImage.alt = Name;
 };
 
 function SetBackgroundImage(Src, Name){
     var BackgroundImage = document.getElementById("BackgroundImage");
-    if (Src == document.URL){
-        BackgroundImage.src = "";
-    }
-    else {
-        BackgroundImage.src = Src;
+    BackgroundImage.src = Src;
+    if (BackgroundImage.src.indexOf("data:") < 0){
+        BackgroundImage.src = ""
     };
     BackgroundImage.alt = Name;
 };
@@ -212,8 +208,11 @@ function CloseBackgroundImagePanel(){
 
 function SaveBackground(){
     var BackgroundImage = document.getElementById("BackgroundImage");
-    alert(BackgroundImage.src);
-    CreateCookie("BackgroundImage", BackgroundImage.src + "|" + BackgroundImage.alt, (24 * 365 * 100), false);
+    var BackgroundImageSrc = BackgroundImage.src
+    if (BackgroundImageSrc.indexOf("data:") < 0){
+        BackgroundImageSrc = ""
+    };
+    CreateCookie("BackgroundImage", (BackgroundImageSrc + "|" + BackgroundImage.alt), (24 * 365 * 100), false);
 };
 
 function LoadBackground(){
