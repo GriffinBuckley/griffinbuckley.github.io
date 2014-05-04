@@ -213,14 +213,14 @@ function SaveBackground(){
     if (BackgroundImageSrc.indexOf("data:") < 0){
         BackgroundImageSrc = ""
     };
-    CreateCookie("BackgroundImage", (BackgroundImageSrc + "|" + BackgroundImage.alt), (24 * 365 * 100), false);
+    CreateCookie("BackgroundImage", btoa(BackgroundImageSrc + "|" + BackgroundImage.alt), (24 * 365 * 100), false);
 };
 
 function LoadBackground(){
     var BackgroundImage = document.getElementById("BackgroundImage");
     var PreviewImage = document.getElementById("PreviewImage");
     var BackgroundData = ReadCookie("BackgroundImage");
-    var CookieValues = BackgroundData.split("|");
-    SetPreviewImage(CookieValues[0], CookieValues[1]);
+    var CookieValues = atob(BackgroundData.split("|"));
+    SetPreviewImage(btCookieValues[0], CookieValues[1]);
 };
     
