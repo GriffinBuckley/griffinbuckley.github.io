@@ -16,19 +16,38 @@
         </div>
     </head>
     <body>
+        <img id="BackgroundImage"/>
         <div id="PageTabs">
             <div class="PageTab"><a href="../index.html">Home</a></div>
             <div class="PageTab" id="SelectedPageTab"><a href="notes.html">Notes</a></div>
         </div>
         <div id="DeviceInformation">
-           Date: <span id="Date"></span>
-           <br/>
-           Time: <span id="Time"></span>
-           <br/>
-           Device: <span id="DeviceType"></span>
+            Date: <span id="Date"></span>
+            <br/>
+            Time: <span id="Time"></span>
+            <br/>
+            Device: <span id="DeviceType"></span>
+            <div id="BackgroundImagePanelButton" onclick="document.getElementById('BackgroundSettingsFrame').style.display='block';" >Set Background Image</div>
         </div>
         <div id="Title">Griffin's Website</div>
         <hr size="10px"/>
         Cool Updates Coming Soon! (I was too lazy to include a style to this text, which I'll do when I include the updates I have planned.)
     </body>
 </html>
+
+<div id="BackgroundSettingsFrame" onclick="if (event.target == this){ CloseBackgroundImagePanel(); };">
+    <div id="SettingsFrame">
+        <img id="PreviewImage" src="">
+        <div id="Close" class="Button" onclick="CloseBackgroundImagePanel();">Close</div>
+        <div id="Apply" class="Button" onclick="SetBackgroundImage(document.getElementById('PreviewImage').src, document.getElementById('PreviewImage').alt);">Apply</div>
+        <div id="Default" class="Button" onclick="SetPreviewImage('', '');">Load Default</div>
+        <div id="Save" class="Button" onclick="SaveBackground();">Save</div>
+        <div id="Load" class="Button" onclick="LoadBackground();">Load</div>
+        <div id="Download" class="Button" onclick="DownloadImage(document.getElementById('PreviewImage').src, document.getElementById('PreviewImage').alt);">Download</div>
+        <input id="ImageInput" type="file">
+    </div>
+</div>
+
+<script type="text/javascript">
+    ImagePreview(document.getElementById('PreviewImage'), document.getElementById('ImageInput'));
+</script>

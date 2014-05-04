@@ -144,3 +144,82 @@ function CollapseComments(){
     };
     animatedcollapse.init();
 };
+
+function ImagePreview(PreviewImage, FileInput){
+    var oFReader = new FileReader();
+    var rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+    oFReader.onload = function(oFREvent){
+        PreviewImage.src = oFREvent.target.result;
+    };
+    FileInput.onchange = function(){
+        var filepath = FileInput.value;
+        var startIndex = (filepath.indexOf('\\') >= 0 ? filepath.lastIndexOf('\\') : filepath.lastIndexOf('/'));
+        var filename = filepath.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+        }
+        PreviewImage.alt = filename;
+        if (FileInput.files.length === 0){
+            return;
+        };
+        var oFile = FileInput.files[0];
+        if (!rFilter.test(oFile.type)){
+            alert("You must select a valid image file!");
+            return;
+        };
+        oFReader.readAsDataURL(oFile);
+    };
+};
+
+function DownloadImage(Url, Name){
+    if (Url != document.URL){
+        var link = document.createElement("a");
+        link.download = Name;
+        link.href = Url;
+        link.click();
+    };
+};
+
+function SetPreviewImage(Src, Name){
+    var PreviewImage = document.getElementById("PreviewImage");
+    if (Src == document.URL){
+        PreviewImage.src = "";
+    }
+    else {
+        PreviewImage.src = Src;
+    };
+    PreviewImage.alt = Name;
+};
+
+function SetBackgroundImage(Src, Name){
+    var BackgroundImage = document.getElementById("BackgroundImage");
+    if (Src == document.URL){
+        BackgroundImage.src = "";
+    }
+    else {
+        BackgroundImage.src = Src;
+    };
+    BackgroundImage.alt = Name;
+};
+
+function CloseBackgroundImagePanel(){
+    var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame')
+    var BackgroundImage = document.getElementById("BackgroundImage");
+    var PreviewImage = document.getElementById("PreviewImage");
+    BackgroundSettingsFrame.style.display = 'none';
+    SetPreviewImage(BackgroundImage.src, BackgroundImage.alt);
+};
+
+function SaveBackground(){
+    var BackgroundImage = document.getElementById("BackgroundImage");
+    CreateCookie("BackgroundImage", BackgroundImage.src + "|" + BackgroundImage.alt, (24 * 365 * 100), false);
+};
+
+function LoadBackground(){
+    var BackgroundImage = document.getElementById("BackgroundImage");
+    var PreviewImage = document.getElementById("PreviewImage");
+    var BackgroundData = ReadCookie("BackgroundImage");
+    var CookieValues = BackgroundData.split("|");
+    SetPreviewImage(CookieValues[0], CookieValues[1]);
+};
+    
