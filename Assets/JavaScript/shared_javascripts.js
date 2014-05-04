@@ -212,7 +212,7 @@ function SaveBackground(){
     if (BackgroundImageSrc.indexOf("data:") < 0){
         BackgroundImageSrc = ""
     };
-    EncodedData = urlencode(BackgroundImageSrc + "|" + BackgroundImage.alt)
+    EncodedData = encodeURIComponent(BackgroundImageSrc + "|" + BackgroundImage.alt)
     alert(EncodedData);
     CreateCookie("BackgroundImage", EncodedData, 365, false);
 };
@@ -221,7 +221,7 @@ function LoadBackground(){
     var BackgroundImage = document.getElementById("BackgroundImage");
     var PreviewImage = document.getElementById("PreviewImage");
     var BackgroundData = ReadCookie("BackgroundImage");
-    var CookieValues = urldecode(BackgroundData.split("|"));
+    var CookieValues = decodeURIComponent(BackgroundData.split("|"));
     SetPreviewImage(CookieValues[0], CookieValues[1]);
 };
     
