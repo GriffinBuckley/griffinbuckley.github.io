@@ -224,6 +224,7 @@ function LoadBackground(){
     var PreviewImage = document.getElementById("PreviewImage");
     var BackgroundData = ReadCookie("BackgroundImage");
     var CookieValues = decodeURIComponent(BackgroundData.split("|"));
+    alert(CookieValues);
     SetPreviewImage(CookieValues[0], CookieValues[1]);
 };
     
