@@ -209,7 +209,6 @@ function CloseBackgroundImagePanel(){
 function SaveBackground(){
     var BackgroundImage = document.getElementById("BackgroundImage");
     var BackgroundImageSrc = BackgroundImage.src
-    alert(BackgroundImageSrc);
     if (BackgroundImageSrc.indexOf("data:") < 0){
         BackgroundImageSrc = ""
     };
