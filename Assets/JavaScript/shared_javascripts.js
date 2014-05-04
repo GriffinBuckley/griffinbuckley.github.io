@@ -213,7 +213,7 @@ function SaveBackground(){
     if (BackgroundImageSrc.indexOf("data:") < 0){
         BackgroundImageSrc = ""
     };
-    EncodedData = encodeURIComponent(BackgroundImageSrc)// + "|" + BackgroundImage.alt)
+    EncodedData = encodeURIComponent(BackgroundImageSrc) + "|" + BackgroundImage.alt)
     alert(EncodedData);
     CreateCookie("BackgroundImage", EncodedData, 365, false);
     alert(ReadCookie("BackgroundImage"))
