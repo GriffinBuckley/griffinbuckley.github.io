@@ -215,7 +215,7 @@ function SaveBackground(){
     EncodedData = encodeURIComponent(BackgroundImageSrc + "|" + BackgroundImage.alt)
     alert(EncodedData);
     CreateCookie("BackgroundImage", EncodedData, 365, false);
-    alert(ReadCookie("BackgroundImage")
+    alert(ReadCookie("BackgroundImage"))
 };
 
 function LoadBackground(){
