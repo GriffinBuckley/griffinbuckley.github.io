@@ -212,9 +212,9 @@ function SaveBackground(){
     if (BackgroundImageSrc.indexOf("data:") < 0){
         BackgroundImageSrc = ""
     };
-    EncodedData = btoa(BackgroundImageSrc + "|" + BackgroundImage.alt)
+    EncodedData = btoa(BackgroundImageSrc )//+ "|" + BackgroundImage.alt)
     alert(EncodedData);
-    CreateCookie("BackgroundImage", /*EncodedData*/"TEEEEEESTTT", 365, false);
+    CreateCookie("BackgroundImage", EncodedData, 365, false);
 };
 
 function LoadBackground(){
