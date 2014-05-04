@@ -212,6 +212,7 @@ function CloseBackgroundImagePanel(){
 
 function SaveBackground(){
     var BackgroundImage = document.getElementById("BackgroundImage");
+    alert(BackgroundImage.src);
     CreateCookie("BackgroundImage", BackgroundImage.src + "|" + BackgroundImage.alt, (24 * 365 * 100), false);
 };
 
