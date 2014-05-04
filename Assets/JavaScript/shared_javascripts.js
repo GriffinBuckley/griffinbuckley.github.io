@@ -223,6 +223,6 @@ function LoadBackground(){
     var PreviewImage = document.getElementById("PreviewImage");
     var BackgroundData = ReadCookie("BackgroundImage");
     var CookieValues = atob(BackgroundData.split("|"));
-    SetPreviewImage(btCookieValues[0], CookieValues[1]);
+    SetPreviewImage(CookieValues[0], CookieValues[1]);
 };
     
