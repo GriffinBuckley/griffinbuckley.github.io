@@ -214,7 +214,7 @@ function SaveBackground(){
     };
     EncodedData = btoa(BackgroundImageSrc + "|" + BackgroundImage.alt)
     alert(EncodedData);
-    CreateCookie("BackgroundImage", EncodedData, (24 * 365 * 100), false);
+    CreateCookie("BackgroundImage", /*EncodedData*/"TEEEEEESTTT", 365, false);
 };
 
 function LoadBackground(){
