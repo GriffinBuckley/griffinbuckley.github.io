@@ -213,19 +213,16 @@ function SaveBackground(){
     if (BackgroundImageSrc.indexOf("data:") < 0){
         BackgroundImageSrc = ""
     };
-    EncodedData = encodeURIComponent(BackgroundImageSrc + "|" + BackgroundImage.alt);
-//    alert(EncodedData);
-    CreateCookie("BackgroundImage", EncodedData, 365, false);
-  //  alert(ReadCookie("BackgroundImage"));
+    EncodedBackgroundImage = encodeURIComponent(BackgroundImageSrc);
+    CreateCookie("BackgroundImage", EncodedBackgroundImage, 365, false);
+    CreateCookie("BackgroundName", BackgroundImage.alt, 365, false);
 };
 
 function LoadBackground(){
     var BackgroundImage = document.getElementById("BackgroundImage");
     var PreviewImage = document.getElementById("PreviewImage");
-    var BackgroundData = ReadCookie("BackgroundImage");
-    var CookieValues = decodeURIComponent(BackgroundData.split("|"));
-    alert("A " + CookieValues[0]);
-    alert("B " + CookieValues[1]);
-    SetPreviewImage(CookieValues[0], CookieValues[1]);
+    var BackgroundImage = decodeURIComponent(ReadCookie("BackgroundImage"));
+    var BackgroundName = ReadCookie("BackgroundName");
+    SetPreviewImage(BackgroundImage, BackgroundName);
 };
     
