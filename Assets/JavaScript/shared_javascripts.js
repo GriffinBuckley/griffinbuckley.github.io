@@ -1,4 +1,4 @@
-function GetDateAndTime(){
+Fuck bitches tonight mothwrfuckerfunction GetDateAndTime(){
     var timestamp = new Date().getTime();
     var date = new Date(timestamp);
     var months = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
