@@ -199,11 +199,24 @@ function SetBackgroundImage(Src, Name){
     BackgroundImage.alt = Name;
 };
 
+function OpenBackgroundImagePanel(){
+    var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame');
+    var BackgroundImage = document.getElementById("BackgroundImage");
+    var BackgroundImageBlur = document.getElementById("BackgroundImageBlur");
+    BackgroundSettingsFrame.style.display = "block";
+    BackgroundImageBlur.src = BackgroundImage.src
+    BackgroundImage.style.display = "none";
+    BackgroundImageBlur.style.display = "block";
+}
+
 function CloseBackgroundImagePanel(){
     var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame')
     var BackgroundImage = document.getElementById("BackgroundImage");
     var PreviewImage = document.getElementById("PreviewImage");
-    BackgroundSettingsFrame.style.display = 'none';
+    BackgroundSettingsFrame.style.display = "none";
+    BackgroundImageBlur.style.display = "none";
+    BackgroundImageBlur.src = "";
+    BackgroundImage.style.display = "block";
     SetPreviewImage(BackgroundImage.src, BackgroundImage.alt);
 };
 
@@ -227,4 +240,9 @@ function LoadBackground(){
         SetPreviewImage(BackgroundImage, BackgroundName);
     };
 };
-    
+
+function LoadBackgroundImage(){
+    LoadBackground();
+    var PreviewImage = document.getElementById("PreviewImage");
+    SetBackgroundImage(PreviewImage.src, PreviewImage.alt);
+};
