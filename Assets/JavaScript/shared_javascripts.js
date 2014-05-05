@@ -216,17 +216,15 @@ function SaveBackground(){
     EncodedBackgroundImage = encodeURIComponent(BackgroundImageSrc);
     localStorage.setItem("BackgroundImage", EncodedBackgroundImage);
     localStorage.setItem("BackgroundName", BackgroundImage.alt);
-//    CreateCookie("BackgroundImage", EncodedBackgroundImage, 365, false);
-//    CreateCookie("BackgroundName", BackgroundImage.alt, 365, false);
 };
 
 function LoadBackground(){
-    var BackgroundImage = document.getElementById("BackgroundImage");
-    var PreviewImage = document.getElementById("PreviewImage");
-//    var BackgroundImage = decodeURIComponent(ReadCookie("BackgroundImage"));
-//    var BackgroundName = ReadCookie("BackgroundName");
-    var BackgroundImage = decodeURIComponent(localStorage.getItem("BackgroundImage"));
-    var BackgroundName = decodeURIComponent(localStorage.getItem("BackgroundName"));
-    SetPreviewImage(BackgroundImage, BackgroundName);
+    if (localStorage.getItem("BackgroundImage")){
+        var BackgroundImage = document.getElementById("BackgroundImage");
+        var PreviewImage = document.getElementById("PreviewImage");
+        var BackgroundImage = decodeURIComponent(localStorage.getItem("BackgroundImage"));
+        var BackgroundName = decodeURIComponent(localStorage.getItem("BackgroundName"));
+        SetPreviewImage(BackgroundImage, BackgroundName);
+    };
 };
     
