@@ -130,11 +130,15 @@
                 window.onload = function(){
                     CollapseComments();
                     LoadDateAndTime();
+                    ImagePreview(document.getElementById('PreviewImage'), document.getElementById('ImageInput'));
+                    LoadBackgroundImage();
                 };
             </script>
         </div>
     </head>
     <body>
+        <img id="BackgroundImage" class="BackgroundImage"/>
+        <img id="BackgroundImageBlur" class="BackgroundImage"/>
         <div id="PageTabs">
             <div class="PageTab" id="SelectedPageTab"><a href="index.html">Home</a></div>
             <div class="PageTab"><a href="./Html/notes.html">Notes</a></div>
@@ -145,6 +149,20 @@
             Time: <span id="Time"></span>
             <br/>
             Device: <span id="DeviceType"></span>
+            <br/>
+            <div id="BackgroundImagePanelButton" onclick="OpenBackgroundImagePanel();" >Set Background Image</div>
+        </div>
+        <div id="BackgroundSettingsFrame" onclick="if (event.target == this){ CloseBackgroundImagePanel(); };">
+            <div id="SettingsFrame">
+                <img id="PreviewImage" src="">
+                <div id="Close" class="Button" onclick="CloseBackgroundImagePanel();">Close</div>
+                <div id="Apply" class="Button" onclick="SetBackgroundImage(document.getElementById('PreviewImage').src, document.getElementById('PreviewImage').alt);">Apply</div>
+                <div id="Default" class="Button" onclick="SetPreviewImage('', '');">Load Default</div>
+                <div id="Save" class="Button" onclick="SaveBackground();">Save</div>
+                <div id="Load" class="Button" onclick="LoadBackground();">Load</div>
+                <div id="Download" class="Button" onclick="DownloadImage(document.getElementById('PreviewImage').src, document.getElementById('PreviewImage').alt);">Download</div>
+                <input id="ImageInput" type="file">
+            </div>
         </div>
         <div id="Title">Griffin's Website</div>
         <hr size="10px"/>

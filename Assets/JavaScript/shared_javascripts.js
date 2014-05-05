@@ -191,23 +191,33 @@ function SetPreviewImage(Src, Name){
 };
 
 function SetBackgroundImage(Src, Name){
+    var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame')
     var BackgroundImage = document.getElementById("BackgroundImage");
     BackgroundImage.src = Src;
     if (BackgroundImage.src.indexOf("data:") < 0){
         BackgroundImage.src = ""
     };
     BackgroundImage.alt = Name;
+    if (BackgroundSettingsFrame.style.display == "block"){
+        SetBackgroundImageBlur();
+    };
 };
 
+function SetBackgroundImageBlur(){
+    var BackgroundImage = document.getElementById("BackgroundImage");
+    var BackgroundImageBlur = document.getElementById("BackgroundImageBlur");
+    BackgroundImageBlur.src = BackgroundImage.src;
+    BackgroundImage.style.display = "none";
+    BackgroundImageBlur.style.display = "block";
+};
+    
 function OpenBackgroundImagePanel(){
     var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame');
     var BackgroundImage = document.getElementById("BackgroundImage");
     var BackgroundImageBlur = document.getElementById("BackgroundImageBlur");
     BackgroundSettingsFrame.style.display = "block";
-    BackgroundImageBlur.src = BackgroundImage.src
-    BackgroundImage.style.display = "none";
-    BackgroundImageBlur.style.display = "block";
-}
+    SetBackgroundImageBlur();
+};
 
 function CloseBackgroundImagePanel(){
     var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame')
@@ -233,11 +243,17 @@ function SaveBackground(){
 
 function LoadBackground(){
     if (localStorage.getItem("BackgroundImage")){
+        var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame')
+        var ImageInput = document.getElementById("ImageInput");
         var BackgroundImage = document.getElementById("BackgroundImage");
         var PreviewImage = document.getElementById("PreviewImage");
         var BackgroundImage = decodeURIComponent(localStorage.getItem("BackgroundImage"));
         var BackgroundName = decodeURIComponent(localStorage.getItem("BackgroundName"));
         SetPreviewImage(BackgroundImage, BackgroundName);
+        ImageInput.value = "";
+        if (BackgroundSettingsFrame.style.display == "block"){
+            SetBackgroundImageBlur();
+        };
     };
 };
 
