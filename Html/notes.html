@@ -12,7 +12,7 @@
                 window.onload = function(){
                     LoadDateAndTime();
                     ImagePreview(document.getElementById('PreviewImage'), document.getElementById('ImageInput'));
-                    LoadBackgroundImage();
+                    LoadBackground(true);
                 };
             </script>
         </div>
@@ -35,12 +35,12 @@
         </div>
         <div id="BackgroundSettingsFrame" onclick="if (event.target == this){ CloseBackgroundImagePanel(); };">
             <div id="SettingsFrame">
-                <img id="PreviewImage" src="">
+                <img id="PreviewImage" src="" alt="">
                 <div id="Close" class="Button" onclick="CloseBackgroundImagePanel();">Close</div>
                 <div id="Apply" class="Button" onclick="SetBackgroundImage(document.getElementById('PreviewImage').src, document.getElementById('PreviewImage').alt);">Apply</div>
                 <div id="Default" class="Button" onclick="SetPreviewImage('', '');">Load Default</div>
                 <div id="Save" class="Button" onclick="SaveBackground();">Save</div>
-                <div id="Load" class="Button" onclick="LoadBackground();">Load</div>
+                <div id="Load" class="Button" onclick="LoadBackground(false);">Load</div>
                 <div id="Download" class="Button" onclick="DownloadImage(document.getElementById('PreviewImage').src, document.getElementById('PreviewImage').alt);">Download</div>
                 <input id="ImageInput" type="file">
             </div>

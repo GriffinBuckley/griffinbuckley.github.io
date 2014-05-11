@@ -185,21 +185,31 @@ function SetPreviewImage(Src, Name){
     var PreviewImage = document.getElementById("PreviewImage");
     PreviewImage.src = Src;
     if (PreviewImage.src.indexOf("data:") < 0){
-        PreviewImage.src = ""
+        PreviewImage.src = "";
     };
     PreviewImage.alt = Name;
 };
 
 function SetBackgroundImage(Src, Name){
-    var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame')
+    var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame');
     var BackgroundImage = document.getElementById("BackgroundImage");
+    var BackgroundImageBlur = document.getElementById("BackgroundImageBlur");
     BackgroundImage.src = Src;
     if (BackgroundImage.src.indexOf("data:") < 0){
-        BackgroundImage.src = ""
+        BackgroundImage.src = "";
     };
     BackgroundImage.alt = Name;
-    if (BackgroundSettingsFrame.style.display == "block"){
+    if (BackgroundImage.src == document.URL){
+        BackgroundImage.style.display = "none";
+    }
+    else {
+        BackgroundImage.style.display = "block";
+    };
+    if (BackgroundSettingsFrame.style.display == "block" && BackgroundImage.style.display != "none"){
         SetBackgroundImageBlur();
+    }
+    else {
+        BackgroundImageBlur.style.display = "none";
     };
 };
 
@@ -210,57 +220,44 @@ function SetBackgroundImageBlur(){
     BackgroundImage.style.display = "none";
     BackgroundImageBlur.style.display = "block";
 };
-    
+
 function OpenBackgroundImagePanel(){
     var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame');
-    var BackgroundImage = document.getElementById("BackgroundImage");
-    var BackgroundImageBlur = document.getElementById("BackgroundImageBlur");
     BackgroundSettingsFrame.style.display = "block";
     SetBackgroundImageBlur();
 };
 
 function CloseBackgroundImagePanel(){
-    var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame')
+    var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame');
     var BackgroundImage = document.getElementById("BackgroundImage");
-    var PreviewImage = document.getElementById("PreviewImage");
     BackgroundSettingsFrame.style.display = "none";
-    BackgroundImageBlur.style.display = "none";
-    BackgroundImageBlur.src = "";
-    BackgroundImage.style.display = "block";
+    SetBackgroundImage(BackgroundImage.src, BackgroundImage.alt);
     SetPreviewImage(BackgroundImage.src, BackgroundImage.alt);
 };
 
 function SaveBackground(){
     var BackgroundImage = document.getElementById("BackgroundImage");
-    var BackgroundImageSrc = BackgroundImage.src
+    var BackgroundImageSrc = BackgroundImage.src;
     if (BackgroundImageSrc.indexOf("data:") < 0){
-        BackgroundImageSrc = ""
+        BackgroundImageSrc = "";
     };
-    EncodedBackgroundImage = encodeURIComponent(BackgroundImageSrc);
+    var EncodedBackgroundImage = encodeURIComponent(BackgroundImageSrc);
     localStorage.setItem("BackgroundImage", EncodedBackgroundImage);
     localStorage.setItem("BackgroundName", BackgroundImage.alt);
 };
 
-function LoadBackground(){
+function LoadBackground(LoadBackgroundImage){
     if (localStorage.getItem("BackgroundImage")){
-        var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame')
+        var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame');
         var ImageInput = document.getElementById("ImageInput");
-        var BackgroundImage = document.getElementById("BackgroundImage");
-        var PreviewImage = document.getElementById("PreviewImage");
         var BackgroundImage = decodeURIComponent(localStorage.getItem("BackgroundImage"));
         var BackgroundName = decodeURIComponent(localStorage.getItem("BackgroundName"));
         SetPreviewImage(BackgroundImage, BackgroundName);
         ImageInput.value = "";
-        if (BackgroundSettingsFrame.style.display == "block"){
-            SetBackgroundImageBlur();
-        };
     };
-};
-
-function LoadBackgroundImage(){
-    LoadBackground();
-    var PreviewImage = document.getElementById("PreviewImage");
-    SetBackgroundImage(PreviewImage.src, PreviewImage.alt);
+    if (LoadBackgroundImage){
+        SetBackgroundImage(BackgroundImage, BackgroundName);
+     };
 };
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
