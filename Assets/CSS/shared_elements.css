@@ -185,6 +185,24 @@ hr {
     width: 100px;
     height: 25px;
 }
+#BackgroundSettingsFrame #SettingsFrame #BackgroundColorDiv {
+    position: absolute;
+    left: 212.5px;
+    top: 185px;
+    width: 100px;
+    height: 50px;
+    font-size-adjust: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+#BackgroundSettingsFrame #SettingsFrame #BackgroundColorDiv #BackgroundColorInput {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: 32.5px;
+    bottom: 5px;
+    border: 0px solid black;
+}
 #DeviceInformation #BackgroundImagePanelButton {
     cursor: pointer;
 }

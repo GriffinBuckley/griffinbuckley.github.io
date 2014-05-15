@@ -146,6 +146,15 @@ function CollapseComments(){
     animatedcollapse.init();
 };
 
+function ComponentToHex(c){
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+};
+
+function RGBToHex(r, g, b) {
+    return "#" + ComponentToHex(r) + ComponentToHex(g) + ComponentToHex(b);
+};
+
 function ImagePreview(PreviewImage, FileInput){
     var oFReader = new FileReader();
     var rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
@@ -181,16 +190,20 @@ function DownloadImage(Url, Name){
     };
 };
 
-function SetPreviewImage(Src, Name){
+function SetPreviewImage(Src, Name, Color){
     var PreviewImage = document.getElementById("PreviewImage");
+    var BackgroundColorInput = document.getElementById("BackgroundColorInput");
     PreviewImage.src = Src;
     if (PreviewImage.src.indexOf("data:") < 0){
         PreviewImage.src = "";
     };
     PreviewImage.alt = Name;
+    PreviewImage.style.backgroundColor = Color;
+    BackgroundColorInput.value = Color;
 };
 
-function SetBackgroundImage(Src, Name){
+function SetBackgroundImage(Src, Name, Color){
+    var Body = document.body;
     var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame');
     var BackgroundImage = document.getElementById("BackgroundImage");
     var BackgroundImageBlur = document.getElementById("BackgroundImageBlur");
@@ -199,6 +212,7 @@ function SetBackgroundImage(Src, Name){
         BackgroundImage.src = "";
     };
     BackgroundImage.alt = Name;
+    Body.style.backgroundColor = Color;
     if (BackgroundImage.src == document.URL){
         BackgroundImage.style.display = "none";
     }
@@ -228,14 +242,16 @@ function OpenBackgroundImagePanel(){
 };
 
 function CloseBackgroundImagePanel(){
+    var Body = document.body;
     var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame');
     var BackgroundImage = document.getElementById("BackgroundImage");
     BackgroundSettingsFrame.style.display = "none";
-    SetBackgroundImage(BackgroundImage.src, BackgroundImage.alt);
-    SetPreviewImage(BackgroundImage.src, BackgroundImage.alt);
+    SetBackgroundImage(BackgroundImage.src, BackgroundImage.alt, BackgroundImage.style.backgroundColor);
+    SetPreviewImage(BackgroundImage.src, BackgroundImage.alt, Body.style.backgroundColor);
 };
 
 function SaveBackground(){
+    var Body = document.body;
     var BackgroundImage = document.getElementById("BackgroundImage");
     var BackgroundImageSrc = BackgroundImage.src;
     if (BackgroundImageSrc.indexOf("data:") < 0){
@@ -244,19 +260,26 @@ function SaveBackground(){
     var EncodedBackgroundImage = encodeURIComponent(BackgroundImageSrc);
     localStorage.setItem("BackgroundImage", EncodedBackgroundImage);
     localStorage.setItem("BackgroundName", BackgroundImage.alt);
+    var RGB = Body.style.backgroundColor
+    RGB = RGB.substring(4, RGB.length-1).replace(/ /g, '').split(',');
+    RGB = RGBToHex(RGB[0], RGB[1], RGB[2]);
+    localStorage.setItem("BackgroundColor", RGB);
 };
 
 function LoadBackground(LoadBackgroundImage){
     if (localStorage.getItem("BackgroundImage")){
         var BackgroundSettingsFrame = document.getElementById('BackgroundSettingsFrame');
         var ImageInput = document.getElementById("ImageInput");
+        var BackgroundColorInput = document.getElementById("BackgroundColorInput");
         var BackgroundImage = decodeURIComponent(localStorage.getItem("BackgroundImage"));
         var BackgroundName = decodeURIComponent(localStorage.getItem("BackgroundName"));
-        SetPreviewImage(BackgroundImage, BackgroundName);
+        var BackgroundColor = localStorage.getItem("BackgroundColor");
+        SetPreviewImage(BackgroundImage, BackgroundName, BackgroundColor);
+        BackgroundColorInput.value = BackgroundColor;
         ImageInput.value = "";
     };
     if (LoadBackgroundImage){
-        SetBackgroundImage(BackgroundImage, BackgroundName);
+        SetBackgroundImage(BackgroundImage, BackgroundName, BackgroundColor);
      };
 };
 

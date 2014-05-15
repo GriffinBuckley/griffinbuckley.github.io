@@ -156,10 +156,13 @@
             <div id="SettingsFrame">
                 <img id="PreviewImage" src="" alt="">
                 <div id="Close" class="Button" onclick="CloseBackgroundImagePanel();">Close</div>
-                <div id="Apply" class="Button" onclick="SetBackgroundImage(document.getElementById('PreviewImage').src, document.getElementById('PreviewImage').alt);">Apply</div>
-                <div id="Default" class="Button" onclick="SetPreviewImage('', '');">Load Default</div>
+                <div id="Apply" class="Button" onclick="var PreviewImage = document.getElementById('PreviewImage'); var BackgroundColorInput = document.getElementById('BackgroundColorInput'); SetBackgroundImage(PreviewImage.src, PreviewImage.alt, BackgroundColorInput.value);">Apply</div>
+                <div id="Default" class="Button" onclick="SetPreviewImage('', '', '66FF66');">Load Default</div>
                 <div id="Save" class="Button" onclick="SaveBackground();">Save</div>
                 <div id="Load" class="Button" onclick="LoadBackground(false);">Load</div>
+                <div id="BackgroundColorDiv">
+                    Background Color: <input id="BackgroundColorInput" type="color" value="#ffffff">
+                </div>
                 <div id="Download" class="Button" onclick="DownloadImage(document.getElementById('PreviewImage').src, document.getElementById('PreviewImage').alt);">Download</div>
                 <input id="ImageInput" type="file">
             </div>
